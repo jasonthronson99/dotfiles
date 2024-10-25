@@ -44,6 +44,8 @@ menu() {
       yay -S --needed zwm-git
       echo "Installing Supplementary Zwm Packages"
       sudo pacman -S --needed polybar feh picom redshift volumeicon parcellite lxqt-powermanagement
+      sudo mkdir /usr/share/xsessions/
+      mv zwm.desktop /usr/share/xsessions/
       exit 0  
       ;;
     5)

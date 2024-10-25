@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# First Make Sure You're At The Home Directory
+cd
 # Update System
 sudo pacman -Syyu
 # Install Aur-Helper

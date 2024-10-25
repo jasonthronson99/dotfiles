@@ -2,6 +2,10 @@
 
 # First Make Sure You're At The Home Directory
 cd
+mkdir ~/Downloads/
+cd
+sudo mkdir /usr/share/xsessions/
+cd
 # Update System
 sudo pacman -Syyu
 # Install Aur-Helper
@@ -36,26 +40,29 @@ menu() {
       sudo pacman -S --needed i3-wm
       echo "Installing Supplementary i3 Packages"
       sudo pacman -S --needed polybar feh picom redshift volumeicon parcellite autotiling lxqt-powermanagement
+      mv zwm.desktop ~/Downloads/ && mv testwall.png ~/Downloads/
       exit 0  
       ;;
     2)
       sudo pacman -S --needed hyprland && yay -S --needed hyprshade pyprland
       echo "Installing Supplementary Hyprland Packages"
       sudo pacman -S --needed swaybg waybar
+      mv zwm.desktop ~/Downloads/ && mv testwall.png ~/Downloads/
       exit 0  
       ;;
     3)
       sudo pacman -S --needed qtile
       echo "Installing Supplementary Qtile Packages"
       sudo pacman -S --needed polybar feh picom redshift volumeicon parcellite
+      mv zwm.desktop ~/Downloads/ && mv testwall.png ~/Downloads/
       exit 0  
       ;;
     4)
       yay -S --needed zwm-git
       echo "Installing Supplementary Zwm Packages"
       sudo pacman -S --needed polybar feh picom redshift volumeicon parcellite lxqt-powermanagement
-      sudo mkdir /usr/share/xsessions/
       mv zwm.desktop /usr/share/xsessions/
+      mv testwall.png ~/Downloads/
       exit 0  
       ;;
     5)

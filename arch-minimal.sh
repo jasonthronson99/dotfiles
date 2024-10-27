@@ -15,10 +15,10 @@ makepkg -si
 cd
 rm -rf yay/
 # Install Non-Aur Packages
-sudo pacman -S --needed python openssh neofetch vlc qbittorrent sddm rofi network-manager-applet xfce4-screensaver vivaldi alacritty kitty galculator flameshot nemo obsidian thunderbird calibre syncthing zathura zathura-pdf-mupdf quodlibet nicotine+ yt-dlp bat helix neovim atuin starship fzf unarchiver btop ncdu tealdeer brightnessctl trash-cli zoxide pyright python-black python-pipx cmake lazygit zellij tmux r bash-language-server
+sudo pacman -S --needed bash-completion python openssh neofetch vlc qbittorrent sddm rofi network-manager-applet xfce4-screensaver vivaldi alacritty kitty galculator flameshot nemo obsidian thunderbird calibre syncthing zathura zathura-pdf-mupdf quodlibet nicotine+ yt-dlp bat helix neovim atuin starship fzf unarchiver btop ncdu tealdeer brightnessctl trash-cli zoxide pyright python-black python-pipx cmake lazygit zellij tmux r bash-language-server
 
 # Install Aur Packages
-yay -S --needed megasync-bin visual-studio-code-bin stremio rstudio-desktop-bin floorp-bin appimagelauncher proton-vpn-gtk-app
+yay -S --needed arcolinux-logout megasync-bin visual-studio-code-bin stremio rstudio-desktop-bin floorp-bin appimagelauncher proton-vpn-gtk-app
 
 # Enable SDDM Service
 systemctl enable sddm.service 

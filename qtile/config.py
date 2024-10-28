@@ -61,7 +61,7 @@ layouts = [layout.Bsp(margin = 2), layout.Matrix(margin = 2)]
 
 # Scratchpads (Name, Launch Command)
 groups.append(ScratchPad('0', [
-        DropDown('Alacritty','alacritty', height = 0.8, width = 0.8, opacity = 0.6),
+        DropDown('Alsamixer','alacritty -e alsamixer', height = 0.8, width = 0.8, opacity = 0.6),
         DropDown('Btop', 'alacritty -e btop', height = 0.8, width = 0.8, opacity = 0.6),
     # Don't Touch The Line Below
     ]))
@@ -85,6 +85,9 @@ screens = [
             widget.Sep(),
             widget.Spacer(length = bar.STRETCH),
             widget.Clock(format="%m/%d/%y %H:%M", padding = 3),
+            widget.Sep(),
+            widget.TextBox("Vol:"),
+            widget.Volume(format="{}", padding = 3),
             widget.Sep(),
             widget.TextBox("Battery:"),
             widget.Battery(format='{percent:1.0%}', padding = 3),

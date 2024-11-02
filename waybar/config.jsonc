@@ -18,7 +18,7 @@
     },
     "pulseaudio": {
       "on-click": "alacritty -e alsamixer",
-      "format": "Battery: {volume}%",
+      "format": "Vol: {volume}%",
       "scroll-step": 1
     },
     "battery": {

@@ -1,6 +1,0 @@
-[Desktop Entry]
-Name=Zwm
-Comment=Login using the zwm window manager
-Exec=/usr/bin/zwm
-TryExec=/usr/bin/zwm
-Type=Application

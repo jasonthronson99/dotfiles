@@ -28,23 +28,16 @@ tab = ["goto_next_paragraph", "collapse_selection"]
 # Shift Keys
 D = ["ensure_selections_forward", "extend_to_line_end"]
 X = "extend_line_above"
-H = "goto_line_start" # Unsure
-L = "goto_line_end" # Unsure
 G = "goto_file_end"
 S-tab = ["goto_prev_paragraph", "collapse_selection"]
-Q = "hsplit"
-O = "rotate_view"
 # Control Keys
 C-left = "goto_previous_buffer"
 C-right = "goto_next_buffer"
-C-h = "goto_previous_buffer"
-C-l = "goto_next_buffer"
 C-x = ":bc!"
-C-f = "search"
 C-s = ":w"
-C-o = ":open ~/GPT.md"
 # Other Keys
-g = { a = "code_action" }
+[keys.normal.g]
+a = "code_action"
      
 [keys.insert]
 C-s = ":w"

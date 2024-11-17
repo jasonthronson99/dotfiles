@@ -7,7 +7,7 @@
     "custom/arch": {
       "format": "Apps",
       "tooltip": false,
-      "on-click": "$HOME/.config/rofi/launchers/type-3/launcher.sh"
+      "on-click": "rofi -show drun"
     },
     "clock": {
       "format": "{:%A %m/%d/%y %H:%M}"

@@ -38,12 +38,12 @@ C-s = ":w"
 # Other Keys
 [keys.normal.g]
 a = "code_action"
+g = [":new", ":insert-output lazygit", ":bc", ":redraw"]
      
 [keys.insert]
-C-s = ":w"
+C-s = [":w", "normal_mode"]
 C-left = "goto_previous_buffer"
 C-right = "goto_next_buffer"
-C-n = "normal_mode" # Unsure
 
 [editor.soft-wrap]
 enable = true

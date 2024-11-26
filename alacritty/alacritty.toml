@@ -5,4 +5,6 @@ opacity = 0.6
 bindings = [
   { key = "Up", mods = "Control|Shift", action = "ScrollHalfPageUp" },
   { key = "Down", mods = "Control|Shift", action = "ScrollHalfPageDown" },
+  { key = "+", mods = "Control|Shift", action = "IncreaseFontSize" },
+  { key = "_", mods = "Control|Shift", action = "DecreaseFontSize" },
 ]

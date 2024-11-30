@@ -1,28 +1,24 @@
 #!/bin/bash
 
 # TERMINAL UTILITIES
-sudo pacman -S --needed bat fzf unarchiver tealdeer brightnessctl atuin
+sudo pacman -S --needed alacritty kitty bat fzf unarchiver tealdeer brightnessctl atuin yt-dlp tmux gdu
 
 # DEVELOPER PROGRAMS
-sudo pacman -S --needed podman-docker distrobox helix
+sudo pacman -S --needed podman-docker distrobox helix ruff-lsp python-black pyright cmake clang lazygit
 yay -S --needed visual-studio-code-bin icu69 
-# Productivity Packages
-sudo pacman -S --needed thunderbird obsidian flameshot nemo okular
-yay -S --needed localsend  
 
-# Entertainment Packages
+# GUI UTILITIES & PRODUCTIVITY APPS
+sudo pacman -S --needed vivaldi vivaldi-ffmpeg-codecs thunderbird obsidian flameshot nemo okular galculator qbittorrent pinta
+yay -S --needed localsend megasync-bin proton-vpn-gtk-app zen-browser-avx2-bin
+
+# GUI ENTERTAINMENT APPS
 sudo pacman -S --needed quodlibet nicotine+
 yay -S --needed stremio 
-# Install Non-Aur Packages
-sudo pacman -S --needed lxqt xfwm4 qbittorrent rofi vivaldi vivaldi-ffmpeg-codecs alacritty kitty galculator calibre yt-dlp helix starship ncdu cmake clang lazygit tmux nnn pinta
 
-# Install Aur Packages
-yay -S --needed quickemu arcolinux-logout megasync-bin floorp-bin proton-vpn-gtk-app
-# LXQT Desktop
-sudo pacman -S --needed lxqt xfwm4
-# Basic Window Manager Utilities
-sudo pacman -S --needed rofi
-yay -S --needed arcolinux-logout
-# Hyprland Packages
-sudo pacman -S --needed hyprland waybar swaybg
+# DESKTOP & WINDOW MANAGER UTILITIES
+sudo pacman -S --needed lxqt xfwm4 rofi polybar waybar swaybg 
+yay -S --needed arcolinux-logout 
+
+# HYPRLAND
+sudo pacman -S --needed hyprland 
 yay -S --needed hyprshade

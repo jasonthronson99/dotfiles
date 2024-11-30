@@ -7,7 +7,16 @@ init(autoreset=True)
 # Current Directory
 current_dir = os.getcwd()
 
+def print_dict_in_columns(dictionary, column_height):
+    items = sorted(dictionary.items())  # Sort the dictionary by keys and convert to a list
+    for i in range(column_height):
+        row = [
+            f" {Fore.MAGENTA}{items[j][0]}{Fore.RED} ({str(items[j][1])})"
+            for j in range(i, len(items), column_height)
+        ]
+        print(" |".join(row))  # Add "|" as the column separator
 # Various Lists
+hidden_dirs = []
 hidden_files = []
 dir_list = []
 file_list = []
@@ -16,20 +25,26 @@ new_dict = {}
 # Using os.scandir() for efficiency
 with os.scandir(current_dir) as entries:
     for entry in entries:
-        if entry.name.startswith("."):
+        if entry.name.startswith(".") and not entry.is_dir():
             hidden_files.append(entry.name)
+        elif entry.name.startswith(".") and entry.is_dir():
+            hidden_dirs.append(entry.name) 
         elif entry.is_dir():
             dir_list.append(entry.name)
-            # Count files in the directory efficiently
-            new_dict[entry.name] = sum(1 for _ in os.scandir(entry.path))
+            new_dict[entry.name] = len(list(os.scandir(entry.path)))
         elif entry.is_file():
             file_list.append(entry.name)
+# Sort Dictionary
 
-# Print Results with Color
+# PRINT RESULTS
 print("")
 if hidden_files:
-    print(Fore.YELLOW + "Hidden Files:" + Style.RESET_ALL, hidden_files, "\n")
+    print(Fore.YELLOW + "Hidden Files:" + Style.RESET_ALL, sorted(hidden_files), "\n")
+if hidden_dirs:
+    print(Fore.RED + "Hidden Directories:" + Style.RESET_ALL, sorted(hidden_dirs), "\n")
 if new_dict:
-    print(Fore.CYAN + "Directory Counts:" + Style.RESET_ALL, new_dict, "\n")
+    print(Fore.LIGHTBLUE_EX + "Normal Directories:")
+    print_dict_in_columns(new_dict, 3)
+    print("")
 if file_list:
-    print(Fore.GREEN + "Normal Files:" + Style.RESET_ALL, file_list, "\n")
+    print(Fore.GREEN + "Normal Files:" + Style.RESET_ALL, sorted(file_list), "\n")

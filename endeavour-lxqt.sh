@@ -1,8 +1,9 @@
 #!/bin/bash
 
-# Install Terminal Utilities
+# TERMINAL UTILITIES
 sudo pacman -S --needed bat fzf unarchiver tealdeer brightnessctl atuin
-# Install Developer Programs
+
+# DEVELOPER PROGRAMS
 sudo pacman -S --needed podman-docker distrobox helix
 yay -S --needed visual-studio-code-bin icu69 
 # Productivity Packages

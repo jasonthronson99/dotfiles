@@ -8,7 +8,7 @@ sudo pacman -S --needed podman-docker distrobox helix ruff-lsp python-black pyri
 yay -S --needed visual-studio-code-bin icu69 
 
 # GUI UTILITIES & PRODUCTIVITY APPS
-sudo pacman -S --needed vivaldi vivaldi-ffmpeg-codecs thunderbird obsidian flameshot nemo okular galculator qbittorrent pinta
+sudo pacman -S --needed vivaldi vivaldi-ffmpeg-codecs thunderbird obsidian flameshot nemo okular galculator qbittorrent pinta bitwarden
 yay -S --needed localsend megasync-bin proton-vpn-gtk-app zen-browser-avx2-bin thorium-browser-bin
 
 # GUI ENTERTAINMENT (NON-GAMING) APPS

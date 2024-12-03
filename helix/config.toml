@@ -35,15 +35,17 @@ C-left = "goto_previous_buffer"
 C-right = "goto_next_buffer"
 C-x = ":bc!"
 C-s = ":w"
+C-g = [":new", ":insert-output lazygit", ":bc", ":redraw"]
 # Other Keys
 [keys.normal.g]
 a = "code_action"
-g = [":new", ":insert-output lazygit", ":bc", ":redraw"]
      
 [keys.insert]
 C-s = [":w", "normal_mode"]
 C-left = "goto_previous_buffer"
 C-right = "goto_next_buffer"
+C-g = [":new", ":insert-output lazygit", ":bc", ":redraw"]
+C-n = "normal_mode"
 
 [editor.soft-wrap]
 enable = true

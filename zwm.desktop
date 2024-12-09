@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=zwm
+Comment=extremely fast tiling window manager
+Exec=zwm
+TryExec=zwm
+Type=Application
+X-LightDM-DesktopName=zwm
+DesktopNames=zwm
+Keywords=tiling;fast;wm;windowmanager;window;manager;

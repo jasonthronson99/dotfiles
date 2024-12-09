@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # TERMINAL UTILITIES
-sudo pacman -S --needed alacritty kitty bat fzf unarchiver tealdeer brightnessctl atuin yt-dlp tmux gdu micro
+sudo pacman -S --needed alacritty kitty bat fzf unarchiver tealdeer brightnessctl atuin yt-dlp tmux gdu micro btop
 
 # DEVELOPER PROGRAMS
 sudo pacman -S --needed podman-docker distrobox helix ruff-lsp python-black pyright cmake clang lazygit
@@ -19,3 +19,6 @@ yay -S --needed stremio
 sudo pacman -S --needed feh rofi polybar waybar swaybg parcellite lxqt-powermanagement volumeicon
 yay -S --needed arcolinux-logout 
 
+# EXTRA/BACKUP WINDOW MANAGER
+yay -S --needed zwm-git
+mv zwm.desktop /usr/share/xsessions/

@@ -1,0 +1,28 @@
+{
+  "layer": "top",
+    "modules-left": ["custom/arch", "hyprland/workspaces", "sway/workspaces"],
+    "modules-center": ["clock", "tray"],
+    "modules-right": ["pulseaudio", "battery"],
+    
+    "custom/arch": {
+      "format": "Apps",
+      "tooltip": false,
+      "on-click": "rofi -show drun"
+    },
+    "clock": {
+      "format": "{:%A %m/%d/%y %H:%M}"
+    },
+    "tray": {
+    "icon-size": 21,
+    "spacing": 10
+    },
+    "pulseaudio": {
+      "on-click": "alacritty -e alsamixer",
+      "format": "Vol: {volume}%",
+      "scroll-step": 1
+    },
+    "battery": {
+      "format": "Battery: {capacity}%",
+      "tooltip": false
+    }
+}

@@ -39,6 +39,7 @@ C-g = [":new", ":insert-output lazygit", ":bc", ":redraw"]
 # Other Keys
 [keys.normal.g]
 a = "code_action"
+
      
 [keys.insert]
 C-s = [":w", "normal_mode"]

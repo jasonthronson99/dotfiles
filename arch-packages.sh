@@ -16,7 +16,7 @@ sudo pacman -S --needed vlc mpv quodlibet nicotine+
 yay -S --needed stremio
 
 # DESKTOP & WINDOW MANAGER UTILITIES
-sudo pacman -S --needed network-manager-applet feh rofi polybar waybar swaybg parcellite lxqt-powermanagement volumeicon gnome-tweaks lxappearance sddm
+sudo pacman -S --needed network-manager-applet feh rofi polybar waybar swaybg parcellite lxqt-powermanagement volumeicon gnome-tweaks lxappearance sddm picom
 yay -S --needed arcolinux-logout 
 
 sudo systemctl enable sddm.service

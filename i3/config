@@ -6,6 +6,7 @@ font pango:monospace 8
 exec_always --no-startup-id nm-applet
 exec_always --no-startup-id megasync
 exec_always --no-startup-id lxqt-powermanagement
+exec_always --no-startup-id parcellite
 exec_always --no-startup-id volumeicon
 exec_always --no-startup-id picom -b
 exec_always --no-startup-id autotiling

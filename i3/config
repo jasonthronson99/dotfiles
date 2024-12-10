@@ -31,7 +31,7 @@ bindsym $mod+q kill
 bindsym $mod+Return exec alacritty
 bindsym $mod+d exec --no-startup-id rofi -show drun
 bindsym $mod+x exec archlinux-logout
-bindsym $mod+w exec vivaldi
+bindsym $mod+w exec zen-browser
 bindsym $mod+p exec zen-browser -private-window
 
 # alternatively, you can use the cursor keys:

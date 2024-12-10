@@ -4,7 +4,7 @@
 sudo pacman -S --needed alacritty kitty bat fzf unarchiver tealdeer brightnessctl atuin yt-dlp tmux gdu micro helix btop sc cmake clang podman-docker distrobox 
 
 # DEVELOPER PROGRAMS
-sudo pacman -S --needed ruff-lsp python-black pyright lazygit vscode-html-languageserver vscode-css-languageserver lua-language-server typescript-language-server
+sudo pacman -S --needed lazygit
 yay -S --needed visual-studio-code-bin icu69 
 
 # GUI UTILITIES & PRODUCTIVITY APPS
@@ -12,14 +12,33 @@ sudo pacman -S --needed obsidian flameshot nemo okular galculator qbittorrent pi
 yay -S --needed localsend betterbird-bin megasync-bin proton-vpn-gtk-app zen-browser-avx2-bin
 
 # GUI ENTERTAINMENT APPS
-sudo pacman -S --needed vlc mpv quodlibet nicotine+ 
-yay -S --needed stremio
+sudo pacman -S --needed vlc quodlibet nicotine+ 
+yay -S --needed stremio freetube
 
-# WINDOW MANAGER
-sudo pacman -S --needed i3-wm
+# WINDOW MANAGER (EDIT WINDOW MANAGER HERE)
+sudo pacman -S --needed i3-wm 
+yay -S --needed autotiling
 
 # DESKTOP & WINDOW MANAGER UTILITIES
-sudo pacman -S --needed network-manager-applet feh rofi polybar waybar swaybg parcellite lxqt-powermanagement volumeicon gnome-tweaks lxappearance sddm picom
-yay -S --needed arcolinux-logout 
+sudo pacman -S --needed network-manager-applet gnome-tweaks rofi lxappearance sddm
+yay -S --needed arcolinux-logout
 
+# SDDM
 sudo systemctl enable sddm.service
+
+echo "Choose Your WM Type:"
+echo "1) X11"
+echo "2) Wayland"
+read -p "Enter Your Choice (1-2): " choice
+
+case $choice in
+    1)
+        echo "Installing X11 Utilities:"
+        sudo pacman -S --needed feh polybar parcellite volumeicon lxqt-powermanagement picom xclip
+        ;;
+    2)
+        echo "Installing Wayland Utilities:"
+        sudo pacman -S --needed waybar swaybg wl-clipboard
+        ;;
+esac
+

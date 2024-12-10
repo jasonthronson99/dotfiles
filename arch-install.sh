@@ -1,5 +1,12 @@
 #!/bin/bash
 
+# INSTALLING YAY
+git clone https://aur.archlinux.org/yay.git
+cd yay/
+makepkg -si
+cd ~/
+rm -rf yay/
+
 # TERMINAL UTILITIES
 sudo pacman -S --needed alacritty kitty bat fzf unarchiver tealdeer brightnessctl atuin yt-dlp tmux gdu micro helix btop sc cmake clang podman-docker distrobox 
 

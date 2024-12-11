@@ -1,5 +1,17 @@
 #!/bin/bash
 
+# MOVING FILES & FOLDERS
+cp .bash_aliases ~/
+TARGET_DIR = "$HOME/.config"
+mkdir -p "$TARGET_DIR"
+
+for item in *; do
+    if [ -d "$item" ]; then
+        echo "Copying directory: $item"
+        cp -r "$item" "$TARGET_DIR"
+    fi
+done
+
 # INSTALLING YAY
 git clone https://aur.archlinux.org/yay.git
 cd yay/
@@ -19,7 +31,7 @@ sudo pacman -S --needed obsidian flameshot nemo okular galculator qbittorrent pi
 yay -S --needed localsend betterbird-bin megasync-bin proton-vpn-gtk-app zen-browser-avx2-bin
 
 # GUI ENTERTAINMENT APPS
-sudo pacman -S --needed vlc quodlibet nicotine+ 
+sudo pacman -S --needed vlc quodlibet nicotine+ gst-plugins-base gst-plugins-base-libs gst-plugin-pipewire gst-plugins-good gst-plugins-bad gst-plugins-bad-libs
 yay -S --needed stremio freetube
 
 # WINDOW MANAGER (EDIT WINDOW MANAGER HERE)

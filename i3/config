@@ -8,7 +8,6 @@ exec_always --no-startup-id megasync
 exec_always --no-startup-id lxqt-powermanagement
 exec_always --no-startup-id parcellite
 exec_always --no-startup-id volumeicon
-exec_always --no-startup-id picom -b
 exec_always --no-startup-id autotiling
 exec_always --no-startup-id feh --bg-fill ~/MEGA/Pictures/wall3.png
 
@@ -31,7 +30,7 @@ bindsym $mod+q kill
 bindsym $mod+Return exec alacritty
 bindsym $mod+d exec --no-startup-id rofi -show drun
 bindsym $mod+x exec archlinux-logout
-bindsym $mod+w exec zen-browser
+bindsym $mod+w exec firefox
 bindsym $mod+p exec zen-browser -private-window
 
 # alternatively, you can use the cursor keys:
@@ -90,8 +89,9 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
+for_window [class="^.*"] border pixel 0
+
 bar {
-        mode invisible
-        tray_output none
-        status_command polybar
+		position top
+        status_command i3status
 }

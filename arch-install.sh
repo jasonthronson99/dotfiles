@@ -2,7 +2,7 @@
 
 # MOVING FILES & FOLDERS
 cp .bash_aliases ~/
-TARGET_DIR = "$HOME/.config"
+TARGET_DIR="$HOME/.config"
 mkdir -p "$TARGET_DIR"
 
 for item in *; do
@@ -39,10 +39,12 @@ sudo pacman -S --needed i3-wm
 yay -S --needed autotiling
 
 # DESKTOP & WINDOW MANAGER UTILITIES
-sudo pacman -S --needed network-manager-applet gnome-tweaks rofi lxappearance sddm
+sudo pacman -S --needed network-manager-applet gnome-tweaks rofi lxappearance
 yay -S --needed arcolinux-logout
 
 # SDDM
+sudo pacman -S --needed sddm
+yay -S --needed sddm-theme-catppuccin 
 sudo systemctl enable sddm.service
 
 echo "Choose Your WM Type:"

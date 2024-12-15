@@ -2,14 +2,16 @@ set $mod Mod4
 
 font pango:monospace 8
 
-# AUTOSTART APPLICATIONS
-exec_always --no-startup-id nm-applet
-exec_always --no-startup-id megasync
-exec_always --no-startup-id lxqt-powermanagement
-exec_always --no-startup-id parcellite
-exec_always --no-startup-id volumeicon
-exec_always --no-startup-id autotiling
-exec_always --no-startup-id feh --bg-fill ~/MEGA/Pictures/wall3.png
+# AUTOSTART APPLICATIONS (All)
+exec_once --no-startup-id nm-applet
+exec_once --no-startup-id megasync
+exec_once --no-startup-id parcellite
+exec_once --no-startup-id feh --bg-fill ~/MEGA/Pictures/wall3.png
+exec_once --no-startup-id volumeicon
+# Debian Autostart Applications
+exec_once --no-startup-id python3 autotiling.py
+# Polybar Autostart Applications
+# exec_once --no-startup-id mate/lxqt power manager
 
 gaps inner 6
 gaps outer 6
@@ -26,12 +28,13 @@ tiling_drag modifier titlebar
 # Kill Window
 bindsym $mod+q kill
 
+# Exit i3
+bindsym $mod+x exec i3 exit
+
 # Specific Applications
 bindsym $mod+Return exec alacritty
 bindsym $mod+d exec --no-startup-id rofi -show drun
-bindsym $mod+x exec archlinux-logout
 bindsym $mod+w exec firefox
-bindsym $mod+p exec zen-browser -private-window
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -91,7 +94,11 @@ bindsym $mod+Shift+r restart
 
 for_window [class="^.*"] border pixel 0
 
+# Change Status Command To Polybar & Uncomment Lines If Not Using Deb
 bar {
-		position top
-        status_command i3status
+	font pango:DejaVu Sans Mono 10
+	separator_symbol "|"
+	status_command i3status
+	# tray_output none
+	# mode invisible
 }

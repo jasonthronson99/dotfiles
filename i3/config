@@ -3,15 +3,15 @@ set $mod Mod4
 font pango:monospace 8
 
 # AUTOSTART APPLICATIONS (All)
-exec_once --no-startup-id nm-applet
-exec_once --no-startup-id megasync
-exec_once --no-startup-id parcellite
-exec_once --no-startup-id feh --bg-fill ~/MEGA/Pictures/wall3.png
-exec_once --no-startup-id volumeicon
+exec_always --no-startup-id nm-applet
+exec_always --no-startup-id megasync
+exec_always --no-startup-id parcellite
+exec_always --no-startup-id feh --bg-fill ~/MEGA/Pictures/wall3.png
+exec_always --no-startup-id volumeicon
 # Debian Autostart Applications
-exec_once --no-startup-id python3 autotiling.py
+exec_always --no-startup-id python3 autotiling.py
 # Polybar Autostart Applications
-# exec_once --no-startup-id mate/lxqt power manager
+# exec_always --no-startup-id mate/lxqt power manager
 
 gaps inner 6
 gaps outer 6

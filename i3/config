@@ -94,11 +94,11 @@ bindsym $mod+Shift+r restart
 
 for_window [class="^.*"] border pixel 0
 
-# Change Status Command To Polybar & Uncomment Lines If Not Using Deb
+# Swap Comments On Lines If Using Polybar
 bar {
+	# tray_output none
+	# mode invisible
 	font pango:DejaVu Sans Mono 10
 	separator_symbol "|"
 	status_command i3status
-	# tray_output none
-	# mode invisible
 }

@@ -8,10 +8,7 @@ exec_always --no-startup-id megasync
 exec_always --no-startup-id parcellite
 exec_always --no-startup-id feh --bg-fill ~/MEGA/Pictures/wall3.png
 exec_always --no-startup-id volumeicon
-# Debian Autostart Applications
 exec_always --no-startup-id python3 autotiling.py
-# Polybar Autostart Applications
-# exec_always --no-startup-id mate/lxqt power manager
 
 gaps inner 6
 gaps outer 6
@@ -30,19 +27,20 @@ bindsym $mod+q kill
 
 # Exit i3
 bindsym $mod+x exec i3 exit
+bindsym $mod+Shift+e exec i3 exit
 
 # Specific Applications
 bindsym $mod+Return exec alacritty
 bindsym $mod+d exec --no-startup-id rofi -show drun
 bindsym $mod+w exec firefox
 
-# alternatively, you can use the cursor keys:
+# Switch Focus Between Applications
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
-# alternatively, you can use the cursor keys:
+# Move Applications
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
@@ -96,9 +94,12 @@ for_window [class="^.*"] border pixel 0
 
 # Swap Comments On Lines If Using Polybar
 bar {
-	# tray_output none
-	# mode invisible
+	position top
+	tray_output primary
 	font pango:DejaVu Sans Mono 10
 	separator_symbol "|"
 	status_command i3status
+	# tray_output none
+	# mode invisible
+	# status_command polybar
 }

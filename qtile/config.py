@@ -5,30 +5,15 @@ import os
 import subprocess
 
 mod = "mod4"
-def set_wallpaper():
-    wallpaper = os.path.expanduser("~/MEGA/Pictures/Wallpapers/wall3.png")
-    session_type = os.getenv("XDG_SESSION_TYPE", "wayland")
+session_type = os.getenv("XDG_SESSION_TYPE")
+wallpaper = os.path.expanduser("~/MEGA/Pictures/Wallpapers/wall3.png")
 
-    if session_type == "wayland":
-        subprocess.Popen(["/nix/store/n75xv0zyydrfb6hz2afxf8m8kjxsm7kp-profile/bin/swaybg", "-i", wallpaper, "-m", "fill"])
-        terminal = "foot"
-    else:
-        subprocess.Popen(["/nix/store/n75xv0zyydrfb6hz2afxf8m8kjxsm7kp-profile/bin/feh", "--bg-fill", wallpaper])
-        terminal = "alacritty"
-
-def applications():
-    subprocess.Popen(["nm-applet"])
-    subprocess.Popen(["megasync"])
-    if session_type != "wayland":
-        subprocess.Popen(["volumeicon"])
-        subprocess.Popen(["parcellite"])
-        subprocess.Popen(["picom", "-b"])
-
-def autostart():
-    set_wallpaper()
-    applications()
-
-autostart()
+if session_type == "wayland":
+    terminal = "foot"
+    subprocess.Popen(["swaybg", "-i", wallpaper, "-m", "fill"])
+elif session_type == "x11":
+    terminal = "alacritty"
+    subprocess.Popen(["feh", "--bg-fill", wallpaper])
 
 keys = [
     # Switch Between Windows
@@ -51,20 +36,17 @@ keys = [
     # Launch Applications Using Specific Keys
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     Key([mod], "d", lazy.spawn("/nix/store/infwjafl44v4gikpzjc6d15dq7lnpq5c-profile/bin/rofi -show drun"), desc="Rofi"),
-    # Toggle between different layouts as defined below
     # Useful System-Based Keys
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),
     Key([mod], "f", lazy.window.toggle_fullscreen(), desc="Toggle fullscreen on the focused window"),
     Key([mod], "t", lazy.window.toggle_floating(), desc="Toggle floating on the focused window"),
     Key([mod, "shift"], "r", lazy.reload_config(), desc="Reload the config"),
-    Key([mod, "shift"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
+    Key([mod], "x", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
 ]
 
-# Add key bindings to switch VTs in Wayland.
-# We can't check qtile.core.name in default config as it is loaded before qtile is started
-# We therefore defer the check until the key binding is run by using .when(func=...)
+# Uncomment All Of This If Using Wayland
 for vt in range(1, 8):
     keys.append(
         Key(
@@ -75,84 +57,48 @@ for vt in range(1, 8):
         )
     )
 
-
 groups = [Group(i) for i in "123456789"]
 
 for i in groups:
-    keys.extend(
-        [
-            # mod + group number = switch to group
-            Key(
-                [mod],
-                i.name,
-                lazy.group[i.name].toscreen(),
-                desc=f"Switch to group {i.name}",
-            ),
-            # mod + shift + group number = switch to & move focused window to group
-            Key(
-                [mod, "shift"],
-                i.name,
-                lazy.window.togroup(i.name, switch_group=True),
-                desc=f"Switch to & move focused window to group {i.name}",
-            ),
-            # Or, use below if you prefer not to switch to that group.
-            # # mod + shift + group number = move focused window to group
-            # Key([mod, "shift"], i.name, lazy.window.togroup(i.name),
-            #     desc="move focused window to group {}".format(i.name)),
-        ]
-    )
+    keys.extend([
+            # Mod + Group Number = Switch To Group
+            Key([mod], i.name, lazy.group[i.name].toscreen(),),
+            # Mod + Shift + Group Number = Move Program To Group
+            Key([mod, "shift"], i.name, lazy.window.togroup(i.name),),
+        ])
 
-layouts = [
-    layout.Columns(margin=6),
-    #layout.Max(),
-    # layout.Stack(num_stacks=2),
-    # layout.Bsp(),
-    layout.Matrix(margin=6),
-    # layout.MonadTall(),
-    # layout.MonadWide(),
-    # layout.RatioTile(),
-    # layout.Tile(),
-    # layout.TreeTab(),
-    # layout.VerticalTile(),
-    # layout.Zoomy(),
-]
+layouts = [layout.Columns(margin=6), layout.Matrix(margin=6),]
 
-widget_defaults = dict(
-    font="sans",
-    fontsize=14,
-    padding=5,
-)
+widget_defaults = dict(font="sans", fontsize=14, padding=5,)
 extension_defaults = widget_defaults.copy()
 
 screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.CurrentLayout(),
+                widget.CurrentLayout(foreground="#28bbbb"),
                 widget.GroupBox(),
-                widget.WindowName(),
+                widget.WindowName(foreground="#28bbbb"),
                 widget.Chord(
                     chords_colors={
                         "launch": ("#ff0000", "#ffffff"),
                     },
                     name_transform=lambda name: name.upper(),
                 ),
-                # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
+                # Systray If X11, StatusNotifier If Wayland
                 widget.StatusNotifier(),
                 widget.Systray(),
-                widget.Clock(format="%a %m/%d/%Y %I:%M %p"),
-                widget.QuickExit(
-                default_text="[Logout]",
-                foreground="FF0000"),
+                widget.Clock(format="%a %m/%d/%Y %I:%M %p", foreground="#28bbbb"),
+                widget.QuickExit(default_text="[Logout]", foreground="#3328bb"),
+                widget.BatteryIcon(),
+                widget.Battery(format='{percent:2.0%}'),
             ],
             24,
-            background="#DAA520",
+            background="#DFBD69",
             border_width=[2, 2, 2, 2],  # Draw top and bottom borders
             border_color=["ff00ff", "ff00ff", "ff00ff", "ff00ff"]  # Borders are magenta
         ),
-        # You can uncomment this variable if you see that on X11 floating resize/moving is laggy
-        # By default we handle these events delayed to already improve performance, however your system might still be struggling
-        # This variable is set to None (no cap) by default, but you can set it to 60 to indicate that you limit it to 60 events per second
+        # Uncomment This Variable If You See X11 Being Laggy
         # x11_drag_polling_rate = 60,
     ),
 ]
@@ -186,23 +132,15 @@ auto_fullscreen = True
 focus_on_window_activation = "smart"
 reconfigure_screens = True
 
-# If things like steam games want to auto-minimize themselves when losing
-# focus, should we respect this or not?
+# Should We Respect Apps That Want To Auto-Minimize When Losing Focus?
 auto_minimize = True
 
-# When using the Wayland backend, this can be used to configure input devices.
+# Use This To Configure Input Devices When Using Wayland
 wl_input_rules = None
 
-# xcursor theme (string or None) and size (integer) for Wayland backend
+# Xcursor Theme (String Or None) & Size (Integer) For Wayland Backend
 wl_xcursor_theme = None
 wl_xcursor_size = 24
 
-# XXX: Gasp! We're lying here. In fact, nobody really uses or cares about this
-# string besides java UI toolkits; you can see several discussions on the
-# mailing lists, GitHub issues, and other WM documentation that suggest setting
-# this string if your java app doesn't work correctly. We may as well just lie
-# and say that we're a working one by default.
-#
-# We choose LG3D to maximize irony: it is a 3D non-reparenting WM written in
-# java that happens to be on java's whitelist.
+# Change This If You Use A Lot Of Java Applications
 wmname = "LG3D"

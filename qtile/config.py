@@ -36,6 +36,7 @@ keys = [
     # Launch Applications Using Specific Keys
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     Key([mod], "d", lazy.spawn("/nix/store/infwjafl44v4gikpzjc6d15dq7lnpq5c-profile/bin/rofi -show drun"), desc="Rofi"),
+    Key([mod], "w", lazy.spawn("~/.config/qtile/wallpaper.sh"), desc="Change wallpapers"),
     # Useful System-Based Keys
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),

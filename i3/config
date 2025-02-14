@@ -8,7 +8,7 @@ exec_always --no-startup-id megasync
 exec_always --no-startup-id parcellite
 exec_always --no-startup-id feh --bg-fill ~/MEGA/Pictures/wall3.png
 exec_always --no-startup-id volumeicon
-exec_always --no-startup-id python3 autotiling.py
+exec_always --no-startup-id python3 ~/.config/i3/autotiling.py
 
 gaps inner 6
 gaps outer 6
@@ -32,7 +32,7 @@ bindsym $mod+Shift+e exec i3 exit
 # Specific Applications
 bindsym $mod+Return exec alacritty
 bindsym $mod+d exec --no-startup-id rofi -show drun
-bindsym $mod+w exec firefox
+bindsym $mod+w exec ~/.config/i3/wallpaper.sh
 
 # Switch Focus Between Applications
 bindsym $mod+Left focus left

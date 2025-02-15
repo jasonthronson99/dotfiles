@@ -36,7 +36,8 @@ keys = [
     # Launch Applications Using Specific Keys
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     Key([mod], "d", lazy.spawn("/nix/store/infwjafl44v4gikpzjc6d15dq7lnpq5c-profile/bin/rofi -show drun"), desc="Rofi"),
-    Key([mod], "w", lazy.spawn("~/.config/qtile/wallpaper.sh"), desc="Change wallpapers"),
+    Key(["mod4"], "w", lazy.spawn("bash -c '/home/jason/.config/qtile/change_wallpaper.sh >> /home/jason/.config/qtile/debug.log 2>&1'")),
+
     # Useful System-Based Keys
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),
@@ -94,8 +95,8 @@ screens = [
                 widget.BatteryIcon(),
                 widget.Battery(format='{percent:2.0%}'),
             ],
-            24,
-            background="#DFBD69",
+            30,
+            background="#282C35",
             border_width=[2, 2, 2, 2],  # Draw top and bottom borders
             border_color=["ff00ff", "ff00ff", "ff00ff", "ff00ff"]  # Borders are magenta
         ),

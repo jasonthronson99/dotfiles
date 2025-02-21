@@ -15,6 +15,8 @@ elif session_type == "x11":
     terminal = "alacritty"
     subprocess.Popen(["feh", "--bg-fill", wallpaper])
 
+subprocess.Popen("/home/jason/.config/qtile/autostart.sh")
+
 keys = [
     # Switch Between Windows
     Key([mod], "left", lazy.layout.left(), desc="Move focus to left"),
@@ -91,7 +93,7 @@ screens = [
                 widget.StatusNotifier(),
                 widget.Systray(),
                 widget.Clock(format="%a %m/%d/%Y %I:%M %p", foreground="#28bbbb"),
-                widget.QuickExit(default_text="[Logout]", foreground="#3328bb"),
+                widget.QuickExit(default_text="[Logout]", foreground="#DFBD49"),
                 widget.BatteryIcon(),
                 widget.Battery(format='{percent:2.0%}'),
             ],

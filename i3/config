@@ -32,7 +32,6 @@ bindsym $mod+Shift+e exec i3 exit
 # Specific Applications
 bindsym $mod+Return exec alacritty
 bindsym $mod+d exec --no-startup-id rofi -show drun
-bindsym $mod+w exec ~/.config/i3/wallpaper.sh
 
 # Switch Focus Between Applications
 bindsym $mod+Left focus left

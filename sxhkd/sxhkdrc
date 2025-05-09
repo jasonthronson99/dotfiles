@@ -1,0 +1,47 @@
+# WM INDEPENDENT HOTKEYS
+
+# Terminal Emulator
+super + Return
+	alacritty
+
+# Launch Programs
+super + d
+	rofi -show drun
+
+# Reload Sxhkd Config
+super + Escape
+	pkill -USR1 -x sxhkd
+
+### BSPWM SPECIFIC HOTKEYS
+
+# Restart Bspwm
+super + {_,shift + } + r
+	bspc wm -r
+
+# Exit Bspwm
+super + x
+	bspc quit
+
+# Close & Kill Window
+super + q
+	bspc node -{c,k}
+
+# Maximize Window
+super + m
+	bspc desktop -l next
+
+# Swap Current Node & Biggest Window 
+super + g
+	bspc node -s biggest.window
+
+# Alter Window State
+super + {t,f}
+	bspc node -t {tiled,floating}
+
+# Switch Focus Between Windows
+super + {_,shift + }{Left,Down,Up,Right}
+	bspc node -{f,s} {west,south,north,east}
+
+# Send Window To Different Workspace
+super + {_,shift + }{1-9,0}
+	bspc {desktop -f,node -d} '^{1-9,10}'

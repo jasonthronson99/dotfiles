@@ -16,6 +16,8 @@ volumeicon &         # Volume Tray Icon
 lxqt-powermanagement &  # Power Tray Icon
 polybar &          # System Bar
 nm-applet &          # Internet
+parcellite &          # Clipboard
+xscreensaver &          # Screensaver
 
 # BSPWM CONFIGURATIONS
 bspc config border_width         2

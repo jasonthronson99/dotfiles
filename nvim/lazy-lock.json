@@ -1,0 +1,4 @@
+{
+  "AniMotion.nvim": { "branch": "main", "commit": "92504a0f2c6c3e2245cef71668e7badf8052eb03" },
+  "lazy.nvim": { "branch": "main", "commit": "6c3bda4aca61a13a9c63f1c1d1b16b9d3be90d7a" }
+}
